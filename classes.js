@@ -9,6 +9,10 @@ class Scene{
     this.image_path=image_path
     this.text1=text1
     this.text2=text2
+    this.children=[]
+}
+setChildren(children){
+    this.children=children
 }
 renderScene(){
     image.src=this.image_path;
@@ -18,4 +22,8 @@ renderScene(){
 }
 }
 let introScene=new Scene("image2.webp","enstasrs","rio")
-introScene.renderScene()
+
+let scenea= new Scene("image3.webp","enstars","iforogr")
+let sceneb=new Scene("image1.webp","f","p")
+scenea.renderScene()
+introScene.setChildren(scenea,sceneb)
