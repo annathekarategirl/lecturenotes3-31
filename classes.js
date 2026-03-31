@@ -18,12 +18,21 @@ renderScene(){
     image.src=this.image_path;
     text1.innerText=this.text1;
     text2.innerHTML=this.text2;
-
+    buttonDiv.innerHTML=""
+for(let i=0;i<this.children.length;i++){
+    let newButton=document.createElement("button");
+    newButton.innerText='option'+(i+1)
+    newButton.addEventListener("click",()=>{this.children[i].renderScene()})
+    buttonDiv.appendChild(newButton)
+}
 }
 }
 let introScene=new Scene("image2.webp","enstasrs","rio")
 
 let scenea= new Scene("image3.webp","enstars","iforogr")
 let sceneb=new Scene("image1.webp","f","p")
-scenea.renderScene()
-introScene.setChildren(scenea,sceneb)
+
+introScene.setChildren([scenea,sceneb])
+scenea.setChildren([introScene,sceneb])
+sceneb.setChildren([scenea,introScene])
+introScene.renderScene()
