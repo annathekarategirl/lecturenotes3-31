@@ -2,7 +2,7 @@ const image=document.getElementById("image")
 const text1=document.getElementById("text1")
 const text2=document.getElementById("text2")
 const buttonDiv=document.getElementById("buttons")
-
+let music= new Audio()
 class Scene{
     constructor(image_path,text1,text2)
 {
@@ -26,6 +26,18 @@ for(let i=0;i<this.children.length;i++){
     buttonDiv.appendChild(newButton)
 }
 }
+}
+
+class MusicScene{
+    constructor(image_path,text1,text2,audio_path){
+        super(image_path,text1,text2)
+        this.audio_path=audio_path
+    }
+    renderScene(){
+        super.renderScene();
+        music=new Audio(this.audio_path);
+        music.play();
+    }
 }
 let introScene=new Scene("image2.webp","enstasrs","rio")
 
