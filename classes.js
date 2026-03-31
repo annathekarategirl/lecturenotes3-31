@@ -23,12 +23,16 @@ for(let i=0;i<this.children.length;i++){
     let newButton=document.createElement("button");
     newButton.innerText='option'+(i+1)
     newButton.addEventListener("click",()=>{this.children[i].renderScene()})
+    newButton.addEventListener("click",()=>this.exitScene())
     buttonDiv.appendChild(newButton)
 }
 }
+exitScene(){
+
+}
 }
 
-class MusicScene{
+class MusicScene extends Scene{
     constructor(image_path,text1,text2,audio_path){
         super(image_path,text1,text2)
         this.audio_path=audio_path
@@ -38,11 +42,15 @@ class MusicScene{
         music=new Audio(this.audio_path);
         music.play();
     }
+    exitScene(){
+        super.exitScene();
+        music.pause()
+    }
 }
 let introScene=new Scene("image2.webp","enstasrs","rio")
 
 let scenea= new Scene("image3.webp","enstars","iforogr")
-let sceneb=new Scene("image1.webp","f","p")
+let sceneb=new MusicScene("image1.webp","f","p","flash.mp3")
 
 introScene.setChildren([scenea,sceneb])
 scenea.setChildren([introScene,sceneb])
