@@ -11,10 +11,11 @@ class Scene{
     this.text2=text2
 }
 renderScene(){
-    image.src=this.image_path
-    text1.innerText=this.text1
+    image.src=this.image_path;
+    text1.innerText=this.text1;
     text2.innerHTML=this.text2;
 
 }
 }
 let introScene=new Scene("image2.webp","enstasrs","rio")
+introScene.renderScene()
